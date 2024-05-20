@@ -1,8 +1,9 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import SummonPage from './Page/SummonPage.vue';
 </script>
 
 <template>
-  <HelloWorld />
+  
+ <SummonPage></SummonPage>
 </template>
 
