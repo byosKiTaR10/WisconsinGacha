@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'universo': "url('./src/assets/Fondos/universo.gif')",
+      },
+    },
   },
   plugins: [],
 }

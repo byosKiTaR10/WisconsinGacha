@@ -1,6 +1,6 @@
 <template>
  
-  <div class="flex justify-center gap-10 ">
+  <div class="flex justify-center gap-10 bg-gray-900">
 
     <Circle text="Home" imageUrl="src/assets/Home.png" color="black" size="text-xl"/>
     <Circle text="Shop" imageUrl="src/assets/Home.png" color="black" size="text-xl"/>
