@@ -4,7 +4,7 @@
       :class="buttonClass"
       :style="backgroundStyle"
     >
-     
+    
     </button>
   </div>
 </template>
@@ -21,7 +21,7 @@ const props = defineProps({
   size: {
     type: String,
     default: 'text-base'
-  }
+  },
 })
 
 const backgroundStyle = computed(() => {
@@ -32,10 +32,8 @@ const backgroundStyle = computed(() => {
 })
 
 const buttonClass = computed(() => {
-
-
   return [
-    'w-20', 'h-20', 'rounded-full', 'flex', 'items-center', 'justify-center',
+    'w-48', 'h-48', 'rounded-full', 'flex', 'items-center', 'justify-center',
     'border-black', 'border-2', 'focus:outline-none',"space-x-19",
     props.imageUrl ? '' : "bg-white"
   ]

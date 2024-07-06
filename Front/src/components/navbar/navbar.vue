@@ -7,6 +7,7 @@
 <p class="text-3xl font-bold underline border-black ">WisconsinGacha</p>
  <Circle text="Perfil" imageUrl="src/assets/Home.png" color="blue-500" size="text-xl"/>
  <Circle text="Colecion" imageUrl="src/assets/Home.png" color="blue-500" size="text-xl"/>
+ <Circle text="Mi Pollita" imageUrl="src/assets/Home.png" color="red-500" size="text-xl"/>
   </div>
  
 </template>

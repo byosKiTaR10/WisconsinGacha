@@ -4,7 +4,8 @@
       :class="circleClass"
       :style="backgroundStyle"
     >
-      <span :class="textClass">{{ text }}</span>
+    <span class="text-white">{{ text }}</span>
+      <!-- <span :class="textClass">{{ text }}</span> -->
     </div>
   </div>
 </template>
