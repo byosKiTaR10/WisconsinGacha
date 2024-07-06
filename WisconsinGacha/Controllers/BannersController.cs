@@ -16,56 +16,17 @@ namespace WisconsinGacha.Controllers
         }
 
         [HttpGet]
-        public string GetBanners()
+        public List<Banner> GetBanners()
         {
             List<Banner> banners = bannersManager.GetBannersAsync().Result;
-            string result = "{\n";
-            foreach (Banner banner in banners)
-            {
-                result +=
-                    "    {\n" +
-                    "        'Id': " + banner.Id + ",\n"
-                    + "        'Name': " + banner.Name + ",\n"
-                    + "        'Cards': [";
-                if (banner.BannerCards != null)
-                {
-                    foreach (Card card in banner.BannerCards)
-                    {
-                        result += card.Name + ", ";
-                    }
-                    result = result.Substring(0, result.Length - 2);
-                }
-                result += "]\n    },\n";
-            }
-            result = result.Substring(0, result.Length - 2);
-            result += "\n}";
-            return result;
+            return banners;
         }
 
         [HttpGet("{id}")]
-        public string GetBanner(int id) 
+        public Banner GetBanner(int id) 
         {
-            string result = "";
             var banner = bannersManager.GetBannerAsync(id).Result;
-            if (banner == null) 
-            {
-                result = "Specified Id does not match any existing banner";
-            }
-            else
-            {
-                result =
-                    "{\n" +
-                    "    'Id': " + banner.Id + ",\n"
-                    + "    'Name': " + banner.Name + ",\n"
-                    + "    'Cards': [";
-                foreach (Card card in banner.BannerCards)
-                {
-                    result += card.Name + ", ";
-                }
-                result = result.Substring(0, result.Length - 2);
-                result += "]\n}";
-            }
-            return result;
+            return banner;
         }
 
         [HttpPost]
