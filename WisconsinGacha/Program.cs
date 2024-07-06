@@ -10,6 +10,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));
 
 builder.Services.AddScoped<ICardsManager, CardsManager>();
+builder.Services.AddScoped<IBannersManager, BannersManager>();
 
 var app = builder.Build();
 

@@ -27,7 +27,7 @@ namespace WisconsinGacha.Database
         public async Task<bool> CreateCardAsync(Card card)
         {
             bool isNewCard = false;
-            if (context.Cards.FindAsync(card.Id).Result == null && context.Cards.SingleOrDefaultAsync(x => x.Name == card.Name) == null)
+            if (context.Cards.FindAsync(card.Id).Result == null && context.Cards.FirstOrDefaultAsync(x => x.Name.ToLower() == card.Name.ToLower()).Result == null)
             {
                 context.Cards.Add(card);
                 await context.SaveChangesAsync();
@@ -38,8 +38,8 @@ namespace WisconsinGacha.Database
 
         public async Task<bool> UpdateCardAsync(Card card)
         {
-            bool isCardUpdated = false;
             var existingCard = await context.Cards.FindAsync(card.Id);
+
             if (existingCard != null)
             {
                 existingCard.Name = card.Name;

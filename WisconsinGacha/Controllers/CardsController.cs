@@ -66,7 +66,7 @@ namespace WisconsinGacha.Controllers
             string result = "";
             if (cardCreated)
             {
-                result = "Card was created succesfully.";
+                result = "Card was created successfully.";
             }
             else
             {
@@ -81,7 +81,7 @@ namespace WisconsinGacha.Controllers
             string result = "";
             if (cardsManager.UpdateCardAsync(card).Result)
             {
-                result = "Card has been updated succesfully.";
+                result = "Card has been updated successfully.";
 
             } else
             {
@@ -97,7 +97,7 @@ namespace WisconsinGacha.Controllers
             string result = "";
             if (isCardDeleted)
             {
-                result = "Card was deleted succesfully";
+                result = "Card was deleted successfully";
             }
             else
             {
