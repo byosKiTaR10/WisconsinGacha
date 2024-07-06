@@ -20,6 +20,7 @@
         <div class="w-48 h-1/3 mt-20" v-for="(planeta, index) in planetas.slice(3)" :key="index + 3">
           <Planet :imageUrl="planeta.img"></Planet>
         </div>
+        {{ handlePlanet }}
       </section>
     </main>
   </section>
@@ -30,6 +31,7 @@
 import { computed } from "vue";
 import Navbar from "../components/navbar/navbar.vue";
 import Planet from "../components/planet/planet.vue";
+import {getAllCards} from "../service/cards.js"
 
 const planetas = [{ img: "src/assets/planetas/dbz.png", nombre: "", descripcion: "" },
 { img: "src/assets/planetas/dbz.png", nombre: "", descripcion: "" },
@@ -38,8 +40,11 @@ const planetas = [{ img: "src/assets/planetas/dbz.png", nombre: "", descripcion:
 { img: "src/assets/planetas/saitama.png", nombre: "", descripcion: "" },
 { img: "src/assets/planetas/Luffy-removebg-preview.png", nombre: "", descripcion: "" }]
 
-const handlePlanet = computed(() => {
+const handlePlanet = computed( async () => {
 
+  data = await getAllCards()
+  console.log(data);
+return "hecho"
 })
 
 
