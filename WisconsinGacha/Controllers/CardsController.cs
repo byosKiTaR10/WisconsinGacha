@@ -16,47 +16,17 @@ namespace WisconsinGacha.Controllers
         }
 
         [HttpGet]
-        public string GetCards()
+        public List<Card> GetCards()
         {
             List<Card> cards = cardsManager.GetCardsAsync().Result;
-            string result = "{\n";
-            foreach (Card card in cards)
-            {
-                result +=
-                    "    {\n" +
-                    "        'Id': " + card.Id + ",\n"
-                    + "        'Name': " + card.Name + ",\n"
-                    + "        'Image': " + card.Image + ",\n"
-                    + "        'Anime': " + card.Anime + ",\n"
-                    + "        'Rarity': " + card.Rarity + "\n"
-                    + "    },\n";
-            }
-            result = result.Substring(0, result.Length - 2);
-            result += "\n}";
-            return result;
+            return cards;
         }
 
         [HttpGet("{id}")]
-        public string GetCard(int id) 
+        public Card GetCard(int id) 
         {
-            string result = "";
             var card = cardsManager.GetCardAsync(id).Result;
-            if (card == null)
-            {
-                result = "Specified Id does not match any existing card";
-            }
-            else
-            {
-                result =
-                    "{\n" +
-                    "    'Id': " + card.Id + ",\n"
-                    + "    'Name': " + card.Name + ",\n"
-                    + "    'Image': " + card.Image + ",\n"
-                    + "    'Anime': " + card.Anime + ",\n"
-                    + "    'Rarity': " + card.Rarity + "\n}";
-            }
-            
-            return result;
+            return card;
         }
 
         [HttpPost]
