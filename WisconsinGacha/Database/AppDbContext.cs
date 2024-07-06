@@ -17,5 +17,15 @@ namespace WisconsinGacha.Database
         }
         public DbSet<Card> Cards { get; set; }
         public DbSet<Banner> Banners { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Banner>()
+                .HasMany(b => b.BannerCards)
+                .WithMany(c => c.Banners)
+                .UsingEntity<Dictionary<string, object>>(
+                    "BannerCard",
+                    bc => bc.HasOne<Card>().WithMany().HasForeignKey("CardId"),
+                    bc => bc.HasOne<Banner>().WithMany().HasForeignKey("BannerId"));
+        }
     }
 }

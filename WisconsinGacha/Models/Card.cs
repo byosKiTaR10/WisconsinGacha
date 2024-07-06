@@ -13,5 +13,6 @@ namespace WisconsinGacha.Models
         public string? Anime { get; set; }
         [Required]
         public int Rarity { get; set; }
+        public List<Banner>? Banners { get; set; }
     }
 }
