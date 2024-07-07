@@ -1,50 +1,50 @@
 <template>
-  <section class="bg-universo h-screen w-screen">
-    <Navbar />
-    <main class="flex flex-col gap-16 ml-32 mr-32 mt-10">
+  <section class="h-screen w-screen bg-universo">
+    <Navbar class="h-1/6"/>
+    <main class="grid gap-1 h-5/6">
       <!-- Primeros 2 planetas -->
-      <section class="flex justify-between">
-        <div class="w-48 h-1/3 mr-48 ml-48" v-for="(planeta, index) in planetas.slice(0, 2)" :key="index">
+      <section class="grid grid-cols-2">
+        <div class="flex justify-end" v-for="(planeta, index) in planetas.slice(0, 2)" :key="index">
           <Planet :imageUrl="planeta.img"></Planet>
         </div>
       </section>
       <!-- Tercer planeta -->
-      <section class="flex justify-center">
-
-        <div class="w-48 h-1/3" v-if="planetas.length > 2">
+      <section  class="grid grid-cols-1 ">
+        <div class="flex justify-end" v-if="planetas.length > 2">
           <Planet :imageUrl="planetas[2].img"></Planet>
         </div>
       </section>
       <!-- Planetas restantes -->
-      <section class="flex justify-between">
-        <div class="w-48 h-1/3 mt-20" v-for="(planeta, index) in planetas.slice(3)" :key="index + 3">
+      <section class="grid grid-cols-3 gap-1">
+        <div class="flex justify-center" v-for="(planeta, index) in planetas.slice(3)" :key="index + 3">
           <Planet :imageUrl="planeta.img"></Planet>
         </div>
-        {{ handlePlanet }}
       </section>
     </main>
   </section>
-
 </template>
 
+
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import Navbar from "../components/navbar/navbar.vue";
 import Planet from "../components/planet/planet.vue";
 import {getAllCards} from "../service/cards.js"
 
-const planetas = [{ img: "src/assets/planetas/dbz.png", nombre: "", descripcion: "" },
-{ img: "src/assets/planetas/dbz.png", nombre: "", descripcion: "" },
-{ img: "src/assets/planetas/Luffy-removebg-preview.png", nombre: "", descripcion: "" },
-{ img: "src/assets/planetas/dbz.png", nombre: "", descripcion: "" },
-{ img: "src/assets/planetas/saitama.png", nombre: "", descripcion: "" },
-{ img: "src/assets/planetas/Luffy-removebg-preview.png", nombre: "", descripcion: "" }]
+const showTooltip = ref(false)
+
+const planetas = [{ img: "src/assets/planetas/dbz.png", name: "funca", description: "funca" },
+{ img: "src/assets/planetas/dbz.png", name: "funca", description: "funca" },
+{ img: "src/assets/planetas/Luffy-removebg-preview.png", name: "funca", description: "funca" },
+{ img: "src/assets/planetas/dbz.png", name: "funca", description: "funca" },
+{ img: "src/assets/planetas/saitama.png", name: "funca", description: "funca" },
+{ img: "src/assets/planetas/Luffy-removebg-preview.png", name: "funca", description: "funca" }]
 
 const handlePlanet = computed( async () => {
 
-  data = await getAllCards()
-  console.log(data);
-return "hecho"
+ const data = await getAllCards()
+ let carta = data[0].name
+return carta
 })
 
 
